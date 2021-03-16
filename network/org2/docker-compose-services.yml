@@ -1,0 +1,66 @@
+
+version: '3.2'
+
+networks:
+    cnrl:
+        external: 
+            name: cnrl
+
+services:
+
+    ca_org2:
+        networks:
+            cnrl:
+                aliases:
+                    - ca_org2
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: on-failure
+                delay: 5s
+                max_attempts: 3
+            placement:
+                constraints:
+                    - node.hostname == cnrlab02
+        image: hyperledger/fabric-ca:x86_64-1.1.0
+        hostname: ca.org2.example.com
+        environment:
+            - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+            - FABRIC_CA_SERVER_CA_NAME=ca_org2
+            - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
+            - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/d9c9e7d10857a5cb4ff48b872ac60d1e7261e9a7b9cf8a32c3d8f97766d7b1f9_sk
+        ports:
+            - "8054:7054"   
+        command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        volumes:
+            - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+
+    couchdb0_org2:
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: on-failure
+                delay: 5s
+                max_attempts: 3
+            placement:
+                constraints:
+                    - node.hostname == cnrlab02
+        image: hyperledger/fabric-couchdb:x86_64-0.4.6
+        hostname: couchdb0_org2
+        networks:
+           - cnrl
+
+    couchdb1_org2:
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: on-failure
+                delay: 5s
+                max_attempts: 3
+            placement:
+                constraints:
+                    - node.hostname == cnrlab02
+        image: hyperledger/fabric-couchdb:x86_64-0.4.6
+        hostname: couchdb1_org2
+        networks:
+           - cnrl
