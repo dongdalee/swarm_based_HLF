@@ -59,6 +59,15 @@ services:
             - /var/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/msp:/var/hyperledger/msp
             - /var/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/tls:/var/hyperledger/tls
             - /var/mynetwork/certs/config/:/var/hyperledger/config
+        extra_hosts:
+            - "orderer1.example.com:10.41.181.130"
+            - "ca.org2.example.com:10.41.181.130"
+            - "peer0.org2.example.com:10.41.181.130"
+            - "peer1.org2.example.com:10.41.181.130"
+            - "orderer2.example.com:10.41.177.200"
+            - "ca.org3.example.com:10.41.177.200"
+            - "peer0.org3.example.com:10.41.177.200"
+            - "peer1.org3.example.com:10.41.177.200"
         networks:
           cnrl:
             aliases:

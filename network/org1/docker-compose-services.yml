@@ -32,6 +32,15 @@ services:
         ports:
             - "7054:7054"   
         command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        extra_hosts:
+            - "orderer1.example.com:10.41.181.130"
+            - "ca.org2.example.com:10.41.181.130"
+            - "peer0.org2.example.com:10.41.181.130"
+            - "peer1.org2.example.com:10.41.181.130"
+            - "orderer2.example.com:10.41.177.200"
+            - "ca.org3.example.com:10.41.177.200"
+            - "peer0.org3.example.com:10.41.177.200"
+            - "peer1.org3.example.com:10.41.177.200"
         volumes:
             - /var/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
 
@@ -72,6 +81,15 @@ services:
             - /var/mynetwork/certs/config:/var/hyperledger/config
             - /var/mynetwork/bin/:/var/bin
             # - /var/mynetwork/bin/jq:/usr/local/bin/jq
+        extra_hosts:
+            - "orderer1.example.com:10.41.181.130"
+            - "ca.org2.example.com:10.41.181.130"
+            - "peer0.org2.example.com:10.41.181.130"
+            - "peer1.org2.example.com:10.41.181.130"
+            - "orderer2.example.com:10.41.177.200"
+            - "ca.org3.example.com:10.41.177.200"
+            - "peer0.org3.example.com:10.41.177.200"
+            - "peer1.org3.example.com:10.41.177.200"
         networks:
             - cnrl
 

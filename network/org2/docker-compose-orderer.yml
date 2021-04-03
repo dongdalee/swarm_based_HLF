@@ -59,6 +59,15 @@ services:
       - /var/mynetwork/certs/config/:/var/hyperledger/config
     ports:
       - 8050:7050
+    extra_hosts:
+      - "orderer0.example.com:10.41.179.58"
+      - "ca.org1.example.com:10.41.179.58"
+      - "peer0.org1.example.com:10.41.179.58"
+      - "peer1.org1.example.com:10.41.179.58"
+      - "orderer2.example.com:10.41.177.200"
+      - "ca.org3.example.com:10.41.177.200"
+      - "peer0.org3.example.com:10.41.177.200"
+      - "peer1.org3.example.com:10.41.177.200"
     networks:
       cnrl:
         aliases:

@@ -22,6 +22,8 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+    SANS:
+      - "localhost"
 
   - Name: Org2
     Domain: org2.example.com
@@ -30,6 +32,8 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+    SANS:
+      - "localhost"
 
   - Name: org3
     Domain: org3.example.com
@@ -38,6 +42,8 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+    SANS:
+      - "localhost"
 
   - Name: Org4
     Domain: org4.example.com
@@ -46,6 +52,8 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+    SANS:
+      - "localhost"
 
   - Name: Org5
     Domain: org5.example.com
@@ -54,6 +62,8 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+    SANS:
+      - "localhost"
 
   - Name: org6
     Domain: org6.example.com
@@ -62,6 +72,8 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+    SANS:
+      - "localhost"
   
   - Name: org7
     Domain: org7.example.com
@@ -70,3 +82,5 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+    SANS:
+      - "localhost"

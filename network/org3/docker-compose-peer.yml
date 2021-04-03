@@ -115,6 +115,15 @@ services:
         ports:
           - 12051:7051
           - 12053:7053
+        extra_hosts:
+            - "orderer0.example.com:10.41.179.58"
+            - "ca.org1.example.com:10.41.179.58"
+            - "peer0.org1.example.com:10.41.179.58"
+            - "peer1.org1.example.com:10.41.179.58"
+            - "orderer1.example.com:10.41.181.130"
+            - "ca.org2.example.com:10.41.181.130"
+            - "peer0.org2.example.com:10.41.181.130"
+            - "peer1.org2.example.com:10.41.181.130"
         networks:
           cnrl:
             aliases:
