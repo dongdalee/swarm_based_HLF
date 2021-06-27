@@ -21,7 +21,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == cnrlab01
+                    - node.hostname == node01
         image: hyperledger/fabric-ca:x86_64-1.1.0
         hostname: ca.org1.example.com
         environment:
@@ -32,15 +32,7 @@ services:
         ports:
             - "7054:7054"   
         command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
-        extra_hosts:
-            - "orderer1.example.com:10.41.181.130"
-            - "ca.org2.example.com:10.41.181.130"
-            - "peer0.org2.example.com:10.41.181.130"
-            - "peer1.org2.example.com:10.41.181.130"
-            - "orderer2.example.com:10.41.177.200"
-            - "ca.org3.example.com:10.41.177.200"
-            - "peer0.org3.example.com:10.41.177.200"
-            - "peer1.org3.example.com:10.41.177.200"
+
         volumes:
             - /var/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
 
@@ -53,7 +45,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == cnrlab01
+                    - node.hostname == node01
         image: hyperledger/fabric-tools:x86_64-1.1.0
         tty: true
         hostname: cli
@@ -81,15 +73,7 @@ services:
             - /var/mynetwork/certs/config:/var/hyperledger/config
             - /var/mynetwork/bin/:/var/bin
             # - /var/mynetwork/bin/jq:/usr/local/bin/jq
-        extra_hosts:
-            - "orderer1.example.com:10.41.181.130"
-            - "ca.org2.example.com:10.41.181.130"
-            - "peer0.org2.example.com:10.41.181.130"
-            - "peer1.org2.example.com:10.41.181.130"
-            - "orderer2.example.com:10.41.177.200"
-            - "ca.org3.example.com:10.41.177.200"
-            - "peer0.org3.example.com:10.41.177.200"
-            - "peer1.org3.example.com:10.41.177.200"
+
         networks:
             - cnrl
 
@@ -102,7 +86,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == cnrlab01
+                    - node.hostname == node01
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org1
         networks:
@@ -117,7 +101,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == cnrlab01
+                    - node.hostname == node01
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org1
         networks:

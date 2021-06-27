@@ -21,7 +21,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == cnrlab03
+                    - node.hostname == node01
         image: hyperledger/fabric-ca:x86_64-1.1.0
         hostname: ca.org3.example.com
         environment:
@@ -32,15 +32,7 @@ services:
         ports:
             - 9054:7054   
         command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
-        extra_hosts:
-            - "orderer0.example.com:10.41.179.58"
-            - "ca.org1.example.com:10.41.179.58"
-            - "peer0.org1.example.com:10.41.179.58"
-            - "peer1.org1.example.com:10.41.179.58"
-            - "orderer1.example.com:10.41.181.130"
-            - "ca.org2.example.com:10.41.181.130"
-            - "peer0.org2.example.com:10.41.181.130"
-            - "peer1.org2.example.com:10.41.181.130"
+
         volumes:
             - /var/mynetwork/certs/crypto-config/peerOrganizations/org3.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
 
@@ -53,7 +45,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == cnrlab03
+                    - node.hostname == node01
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org3
         networks:
@@ -68,7 +60,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == cnrlab03
+                    - node.hostname == node01
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org3
         networks:
